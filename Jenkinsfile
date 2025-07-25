@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout From Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aj7Ay/Petclinic-Real.git'
+                git branch: 'main', url: 'https://github.com/rushikesh3111/Java-Application-.git'
             }
         }
         stage('mvn compile'){
