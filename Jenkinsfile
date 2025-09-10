@@ -60,15 +60,15 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build -t petclinic1 ."
-                       sh "docker tag petclinic1 sevenajay/petclinic1:latest "
-                       sh "docker push sevenajay/petclinic1:latest "
+                       sh "docker tag petclinic1 rushikesh31/petclinic1:latest "
+                       sh "docker push  rushikesh31/petclinic1:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image sevenajay/petclinic1:latest > trivy.txt" 
+                sh "trivy image rushikesh31/petclinic1:latest > trivy.txt" 
             }
         }
         stage('Clean up containers') {   //if container runs it will stop and remove this block
@@ -111,7 +111,7 @@ pipeline{
     }
         stage('Deploy to conatiner'){
             steps{
-                sh 'docker run -d --name pet1 -p 8082:8080 sevenajay/petclinic1:latest'
+                sh 'docker run -d --name pet1 -p 8082:8080 rushikesh31/petclinic1:latest'
             }
         }
         stage("Deploy To Tomcat"){
